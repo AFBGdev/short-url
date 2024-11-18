@@ -11,14 +11,19 @@ export function LinksProvider({ children }: LinksProviderProps) {
   const [links, setLinks] = useState<LinkType[]>([]);
 
   useEffect(() => {
-    getLinks()
-      .then(data => {
-        setLinks(data)
-      })
-      .catch(error => {
-        console.error(error)
-      })
+    fetchLinks();
   }, [])
+
+  const fetchLinks = async () => {
+    try {
+      const links = await getLinks();
+
+      setLinks(links);
+
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   const createNewShortUrlLink = async (targetUrl: CreateLinkFormValuesType) => {
     try {
