@@ -1,9 +1,4 @@
-export type CreateLinkRequestType = {
-  targetUrl: string
-}
-
-export type CreateLinkResponseType = 
-{
+export type ApiLinkType = {
   id: string,
   target_url: string,
   slug: string,
@@ -11,3 +6,11 @@ export type CreateLinkResponseType =
   updated_at: string,
   created_at: string
 }
+
+export type GetLinksResponseType = ApiLinkType[]
+
+export type CreateLinkRequestType = {
+  targetUrl: string
+}
+
+export type CreateLinkResponseType = ApiLinkType
