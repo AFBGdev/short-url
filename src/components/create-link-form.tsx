@@ -1,34 +1,17 @@
 import { IoLinkOutline } from 'react-icons/io5';
 import { BsArrowReturnLeft } from 'react-icons/bs';
 import { useForm } from 'react-hook-form';
-import { createLink } from '../api/links.requests';
-import { type CreateLinkRequestType } from '../types/requests-types';
-import { type CreateLinkFormInputsType } from '../types/types';
+import { type CreateLinkFormValuesType } from '../types/types';
+import { useLinks } from '../hooks/useLinks';
 
 export function CreateLinkForm() {
-
-  const { register, handleSubmit, formState: { errors: formErrors } } = useForm<CreateLinkFormInputsType>()
-
-  const createNewShortUrl = async (values: CreateLinkFormInputsType) => {
-    try {
-      const newLink: CreateLinkRequestType = {
-        target: values.target
-      };
-
-      const createdLink = await createLink(newLink);
-
-      console.log('Created: ', JSON.stringify(createdLink))
-      alert('New Link created!')
-
-    } catch (error) {
-      console.error(error);
-    }
-  }
+  const { createNewShortUrlLink } = useLinks();
+  const { register, handleSubmit, formState: { errors: formErrors } } = useForm<CreateLinkFormValuesType>()
 
   return (
     <form
       className="relative flex items-center"
-      onSubmit={handleSubmit(createNewShortUrl)}
+      onSubmit={handleSubmit(createNewShortUrlLink)}
     >
       <IoLinkOutline
         className='absolute inset-y-0 left-0 my-2 ml-3 text-gray-400'

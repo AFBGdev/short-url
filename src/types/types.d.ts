@@ -6,9 +6,10 @@ export type LinkType = {
 }
 
 export type LinksContextType = {
-  links: LinkType[]
+  links: LinkType[],
+  createNewShortUrlLink: (targetUrl) => Promise<void>
 }
 
-export type CreateLinkFormInputsType = {
-  target: LinkType['targetUrl']
+export type CreateLinkFormValuesType = {
+  target: LinkType['targetUrl'],
 }

@@ -1,7 +1,7 @@
 import { useEffect, useState, type ReactElement } from 'react';
 import { LinksContext } from '../contexts/links-context';
-import { type LinkType } from '../types/types';
-import { getLinks } from '../api/links.requests';
+import { type CreateLinkFormValuesType, type LinkType } from '../types/types';
+import { createLink, getLinks } from '../api/links.requests';
 
 interface LinksProviderProps {
   children: ReactElement
@@ -20,9 +20,24 @@ export function LinksProvider({ children }: LinksProviderProps) {
       })
   }, [])
 
+  const createNewShortUrlLink = async (targetUrl: CreateLinkFormValuesType) => {
+    try {
+      const newLink = targetUrl
+
+      const createdLink = await createLink(newLink);
+
+      console.log('Created: ', JSON.stringify(createdLink))
+      alert('New Link created!')
+
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   return (
     <LinksContext.Provider value={{
-      links
+      links,
+      createNewShortUrlLink,
     }}>
       { children }
     </LinksContext.Provider>
