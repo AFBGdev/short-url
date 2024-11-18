@@ -34,6 +34,8 @@ export function LinksLisItem({ link }: LinksLisItemProps) {
 
         <a
           className='max-w-60 sm:max-w-72 truncate text-sm text-gray-400 underline-offset-4 transition-all hover:text-gray-700 hover:underline cursor-pointer'
+          href={link.targetUrl}
+          target="_blank"
         >
           {link.targetUrl}
         </a>
