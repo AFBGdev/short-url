@@ -7,6 +7,11 @@ interface LinksLisItemProps {
 }
 
 export function LinksLisItem({ link }: LinksLisItemProps) {
+
+  const handleCopyToClipboard = (linkToCopy: string) => {
+    navigator.clipboard.writeText(linkToCopy);
+  }
+
   return (
     <li
     className='w-full flex flex-col rounded-xl border border-gray-200 bg-white py-3 px-4 shadow-lg gap-1.5'
@@ -24,6 +29,7 @@ export function LinksLisItem({ link }: LinksLisItemProps) {
         <button
           className='rounded-full transition-all duration-75 border border-gray-200 bg-gray-50 hover:scale-100 hover:bg-gray-100 active:bg-gray-100 p-1.5'
           type='button'
+          onClick={() => handleCopyToClipboard(link.redirectUrl)}
         >
           <IoCopyOutline size={18} />
         </button>
