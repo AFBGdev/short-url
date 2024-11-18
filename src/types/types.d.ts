@@ -4,3 +4,7 @@ export type LinkType = {
   slug: string,
   redirectUrl: string
 }
+
+export type LinksContextType = {
+  links: LinkType[]
+}

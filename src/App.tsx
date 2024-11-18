@@ -1,21 +1,9 @@
-import { useEffect, useState } from 'react';
 import { CreateLinkForm } from './components/create-link-form';
 import { LinksList } from './components/links-list';
-import { type LinkType } from './types/types';
-import { getLinks } from './api/links.requests';
+import { useLinks } from './hooks/useLinks';
 
 function App() {
-  const [links, setLinks] = useState<LinkType[]>([]);
-
-  useEffect(() => {
-    getLinks()
-      .then(data => {
-        setLinks(data)
-      })
-      .catch(error => {
-        console.error(error)
-      })
-  }, [])
+  const { links } = useLinks();
 
   return (
     <main className="max-w-3xl mx-auto flex flex-col items-center">
