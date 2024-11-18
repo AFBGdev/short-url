@@ -11,14 +11,14 @@ function App() {
     <>
       <ToastContainer />
 
-      <main className="max-w-3xl mx-auto flex flex-col items-center">
-        <h1 className="text-3xl font-bold mb-6 text-center">
+      <main className="max-w-3xl mx-auto flex flex-col items-center pt-8">
+        <h1 className="text-5xl font-bold mb-6 text-center">
           Short Links With
           <br />
           <span className="text-orange-400">ShortURL</span>
         </h1>
 
-        <section className="w-full sm:max-w-md p-3 sm:rounded-xl sm:bg-white/50 sm:backgrop-blur flex flex-col gap-4">
+        <section className="w-full sm:max-w-md p-3 sm:rounded-xl sm:bg-white/50 sm:backgrop-blur flex flex-col gap-6">
           <CreateLinkForm />
 
           <LinksList data={links} />
