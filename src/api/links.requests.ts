@@ -26,3 +26,14 @@ export const createLink = async (newLink: CreateLinkRequestType): Promise<LinkTy
     throw new Error(error.response.data.error.message);
   }
 }
+
+export const deleteLink = async (linkId: LinkType['id']): Promise<string> => {
+  try {
+    const response = await axiosInstance.delete(`${ENDPOINT}/${linkId}`);
+
+    return response.data.data
+
+  } catch (error: any) {
+    throw new Error(error.response.data.error.message);
+  }
+}

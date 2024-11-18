@@ -1,12 +1,14 @@
-import { IoCopyOutline } from 'react-icons/io5';
+import { IoCopyOutline, IoTrashOutline } from 'react-icons/io5';
 import { LinkType } from '../types/types';
 import { BsArrowReturnRight } from 'react-icons/bs';
+import { useLinks } from '../hooks/useLinks';
 
 interface LinksLisItemProps {
   link: LinkType
 }
 
 export function LinksLisItem({ link }: LinksLisItemProps) {
+  const { removeLink } = useLinks();
 
   const handleCopyToClipboard = (linkToCopy: string) => {
     navigator.clipboard.writeText(linkToCopy);
@@ -32,6 +34,14 @@ export function LinksLisItem({ link }: LinksLisItemProps) {
           onClick={() => handleCopyToClipboard(link.redirectUrl)}
         >
           <IoCopyOutline size={18} />
+        </button>
+
+        <button
+          className='rounded-full transition-all duration-75 border border-gray-200 bg-gray-50 hover:scale-100 hover:bg-gray-100 active:bg-gray-100 p-1.5'
+          type='button'
+          onClick={() => removeLink(link.id)}
+        >
+          <IoTrashOutline size={18} />
         </button>
       </div>
 
