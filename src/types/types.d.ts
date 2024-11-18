@@ -8,3 +8,7 @@ export type LinkType = {
 export type LinksContextType = {
   links: LinkType[]
 }
+
+export type CreateLinkFormInputsType = {
+  target: LinkType['targetUrl']
+}

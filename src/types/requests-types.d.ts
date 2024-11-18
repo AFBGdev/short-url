@@ -10,7 +10,7 @@ export type ApiLinkType = {
 export type GetLinksResponseType = ApiLinkType[]
 
 export type CreateLinkRequestType = {
-  targetUrl: string
+  target: string
 }
 
 export type CreateLinkResponseType = ApiLinkType
