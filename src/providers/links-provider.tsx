@@ -32,7 +32,9 @@ export function LinksProvider({ children }: LinksProviderProps) {
       const createdLink = await createLink(newLink);
 
       console.log('Created: ', JSON.stringify(createdLink))
+      fetchLinks();
       alert('New Link created!')
+
 
     } catch (error) {
       console.error(error);
@@ -44,7 +46,9 @@ export function LinksProvider({ children }: LinksProviderProps) {
       const deletedLinkId = await deleteLink(linkId)
 
       console.log('Deleted: ', deletedLinkId)
+      fetchLinks();
       alert(`Link ${deletedLinkId} was deleted!`)
+
 
     } catch (error) {
       console.error(error);
