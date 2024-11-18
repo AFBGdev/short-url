@@ -27,10 +27,8 @@ export function LinksProvider({ children }: LinksProviderProps) {
     }
   }
 
-  const createNewShortUrlLink = async (targetUrl: CreateLinkFormValuesType) => {
+  const createNewShortUrlLink = async (newLink: CreateLinkFormValuesType) => {
     try {
-      const newLink = targetUrl
-
       const createdLink = await createLink(newLink);
 
       fetchLinks();

@@ -7,7 +7,7 @@ export type LinkType = {
 
 export type LinksContextType = {
   links: LinkType[],
-  createNewShortUrlLink: (targetUrl) => Promise<void>,
+  createNewShortUrlLink: (newLink: { target: LinkType['targetUrl']; }) => Promise<void>,
   removeLink: (linkId) => Promise<void>,
 }
 

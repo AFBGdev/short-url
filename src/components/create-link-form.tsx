@@ -1,6 +1,6 @@
 import { IoLinkOutline } from 'react-icons/io5';
 import { BsArrowReturnLeft } from 'react-icons/bs';
-import { useForm } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { type CreateLinkFormValuesType } from '../types/types';
 import { useLinks } from '../hooks/useLinks';
 
@@ -8,10 +8,12 @@ export function CreateLinkForm() {
   const { createNewShortUrlLink } = useLinks();
   const { register, handleSubmit, formState: { errors: formErrors } } = useForm<CreateLinkFormValuesType>()
 
+  const onSubmit: SubmitHandler<CreateLinkFormValuesType> = (values) => createNewShortUrlLink(values)
+
   return (
     <form
       className="relative flex items-center"
-      onSubmit={handleSubmit(createNewShortUrlLink)}
+      onSubmit={handleSubmit(onSubmit)}
     >
       <IoLinkOutline
         className='absolute inset-y-0 left-0 my-2 ml-3 text-gray-400'
